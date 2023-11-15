@@ -37,9 +37,33 @@ with open('bank_data.csv', 'r') as csv_file:
         if transaction_type not in valid_transaction_types:
                 valid_record = False
                 error_message += 'Invalid transaction type. '
+        ## adding try-block for transcation_amount
+        try:
+                # Extract the transaction amount from the third column
+                transaction_amount = float(row[2])
+        except ValueError:
+                valid_record = False
+                error_message += 'Non-numeric transaction amount.'
 
         # Extract the transaction amount from the third column
         ### VALIDATION 2 ###
+        if valid_record:
+                # updating  the transaction_counter for valid records
+                transaction_count += 1
+                total_transaction_amount += transaction_amount
+
+                if customer_id not in customer_data:
+                    customer_data[customer_id] = {'balance': 0, 'transactions': []}
+
+                if transaction_type == 'deposit':
+                    customer_data[customer_id]['balance'] += transaction_amount
+                elif transaction_type == 'withdraw':
+                    customer_data[customer_id]['balance'] -= transaction_amount
+
+                customer_data[customer_id]['transactions'].append((transaction_amount, transaction_type))
+        else:
+                # Record invalid records
+                rejected_records.append((row, error_message))
         transaction_amount = float(row[2])
 
         if valid_record:
