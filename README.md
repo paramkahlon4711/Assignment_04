@@ -73,5 +73,3 @@ testing the data and comparing the code for each transaction value and applying 
     else:
         print("\nNo valid transactions found.")
 
-    print("\nREJECTED RECORDS\n================")
-
