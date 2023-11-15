@@ -52,11 +52,12 @@ ry:
                     customer_data[customer_id]['balance'] += transaction_amount
                 elif transaction_type == 'withdraw':
                     customer_data[customer_id]['balance'] -= transaction_amount
-and
- adding rejected records and error massage
+
+adding rejected records and error message
     for record, error in rejected_records:
         print("REJECTED RECORD:", record)
         print("ERROR MESSAGE:", error)
+
 testing the data and comparing the code for each transaction value and applying the debug:
 
     print("PiXELL River Transaction Report\n===============================\n")
