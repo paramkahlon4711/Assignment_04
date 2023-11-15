@@ -34,6 +34,9 @@ with open('bank_data.csv', 'r') as csv_file:
         # Extract the transaction type from the second column
         transaction_type = row[1]
         ### VALIDATION 1 ###
+        if transaction_type not in valid_transaction_types:
+                valid_record = False
+                error_message += 'Invalid transaction type. '
 
         # Extract the transaction amount from the third column
         ### VALIDATION 2 ###
