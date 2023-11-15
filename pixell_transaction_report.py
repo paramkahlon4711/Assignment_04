@@ -20,7 +20,6 @@ try:
 
     with open('bank_data.csv', 'r') as csv_file:
         reader = csv.reader(csv_file)
-        ## adding the first row header
         next(reader)
         for row in reader:
             # Reset valid record and error message for each iteration
